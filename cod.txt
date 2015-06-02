@@ -1,0 +1,29 @@
+#include <allegro.h>
+int x=250;
+int main(){
+    allegro_init(); //inicializa variaveis padroes
+    install_keyboard();//permite o uso do teclado
+    set_color_depth(32);//set o numero de bits a serem usados
+    set_gfx_mode(GFX_AUTODETECT,640,480,0,0);//seta a placa de video a ser usada,o tamanho,e virtualização da tela
+    PALETTE pal; //variavel do tipo paleta
+    BITMAP *img = load_bitmap("sprites/foguete2.bmp",pal);//ponteiro do tipo bitmap que carrega a imagem
+    BITMAP *img2 = load_bitmap("sprites/meteoro2.bmp",pal);
+    BITMAP *buffer = create_bitmap(640,480);
+    while(!key[KEY_ESC]){//
+        /* textout(screen,font,"NOME:",1,1,makecol(0,0,255)); coloca um texto na tela     */  
+       // line(buffer, 10,10, 100,100, makecol(0,0,255 ) );   
+      // circle(img, 15,150,100, makecol(255,0,0 ) );
+        // rect(img, 10,10, 100,100, makecol(255,0,0 ) );
+        //triangle(img,150,150,350,350,10,350, makecol(255,0,0 ) ); 
+        draw_sprite(buffer,img2,250,10); 
+       if(key[KEY_RIGHT]){//verifica se aprtou a tecla para direira
+             x+=50;                              
+       }
+        clear(screen);
+        draw_sprite(buffer,img,x,250); //funçaõ para imprimir imagem 
+        blit(buffer,screen,0,0,0,0,640,480);
+        //draw_sprite(screen,buffer,100,100);
+    };
+    return 0;   
+}END_OF_MAIN();
+
